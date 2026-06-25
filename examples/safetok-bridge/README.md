@@ -25,6 +25,18 @@ OpenClaw session  →  assistant reply
 safeTok user
 ```
 
+## Installation
+
+This bridge is published on [ClawHub](https://clawhub.ai) as `ductapecode/safetok-bridge`.
+
+In a terminal on the machine where OpenClaw is running:
+
+```bash
+openclaw skills install safetok-bridge
+```
+
+This installs the bridge into `~/.openclaw/skills/safetok-bridge/`. Then follow the **Setup** steps below to configure and run it.
+
 ## Prerequisites
 
 - **safeTok** — download at [safetok.me](https://safetok.me)
