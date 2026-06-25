@@ -8,7 +8,7 @@
 
 A bidirectional DM bridge that connects [safeTok](https://safetok.me) to OpenClaw via the Gateway WebSocket API. Incoming safeTok DMs are routed to a dedicated OpenClaw session; the assistant's reply is encrypted and published back to the Nostr relays — end-to-end encrypted, decentralized, no middleman.
 
-![safeTok DMs appearing in OpenClaw Control UI](docs/preview.png)
+![safeTok DMs appearing in OpenClaw Control UI](https://raw.githubusercontent.com/ductapecode/openclaw/feat/safetok-bridge-example/examples/safetok-bridge/docs/preview.png)
 
 ## How it works
 
