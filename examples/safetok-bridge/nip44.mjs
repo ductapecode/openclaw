@@ -7,7 +7,7 @@
 //   Conv key = HKDF extract + expand (not extract-only)
 //   Decrypt tries both y-parities (safeTok fallback)
 
-import { secp256k1, schnorr } from "@noble/curves/secp256k1";
+import { secp256k1, schnorr } from "@noble/curves/secp256k1.js";
 
 const te = new TextEncoder();
 const td = new TextDecoder();
