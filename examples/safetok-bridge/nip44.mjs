@@ -112,7 +112,10 @@ function chacha20(key, nonce, data) {
 // Proven by NIP44EcdhSpecTest.kt; comments in Kotlin source are wrong
 async function ecdh(privHex, pubXOnlyHex, parity) {
   // noble/curves getSharedSecret returns compressed point (33 bytes) by default
-  const compressed = secp256k1.getSharedSecret(privHex, parity + pubXOnlyHex);
+  const compressed = secp256k1.getSharedSecret(
+    hexToBytes(privHex),
+    hexToBytes(parity + pubXOnlyHex),
+  );
   return sha256(compressed);
 }
 
@@ -175,7 +178,7 @@ export async function decrypt(content, recipientPrivHex, senderPubHex) {
 
 // §4 — build signed kind-4 DM event (NostrEvent.kt:54-100)
 export async function buildDmEvent(message, senderPrivHex, recipientPubHex) {
-  const pubKeyBytes = secp256k1.getPublicKey(senderPrivHex, true); // compressed 33 bytes
+  const pubKeyBytes = secp256k1.getPublicKey(hexToBytes(senderPrivHex), true); // compressed 33 bytes
   const pubkey = bytesToHex(pubKeyBytes.slice(1)); // x-only: drop 02/03
   const created_at = Math.floor(Date.now() / 1000);
   const kind = 4;
@@ -195,6 +198,6 @@ export function generatePrivKey() {
 }
 
 export function privToXOnlyPub(privHex) {
-  const compressed = secp256k1.getPublicKey(privHex, true);
+  const compressed = secp256k1.getPublicKey(hexToBytes(privHex), true);
   return bytesToHex(compressed.slice(1)); // x-only
 }
